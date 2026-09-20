@@ -3,16 +3,20 @@
 Static site for https://www.genesishub.online, migrated from Wix to GitHub Pages.
 
 ```
-index.html            ホーム
+index.html            ホーム（日本語）— 対象: 日本企業。信頼性・法人としての実在を伝える
+en/index.html         Home (English) — audience: overseas companies; sells Japan market-entry expertise
 info.html             会社情報       (also served at /info)
 privacypolicy.html    プライバシーポリシー (also served at /privacypolicy)
-style.css             all styles
-images/               site images
+style.css             all styles (design tokens at the top of the file)
+site.js               mobile menu + Formspree contact form (shared by all pages)
+images/               site images (game artwork only)
 CNAME                 custom domain for GitHub Pages (www.genesishub.online)
 .nojekyll             tells GitHub Pages to serve files as-is
 ```
 
 Editing: open the `.html` file, change the text, commit, push. GitHub Pages redeploys in about a minute.
+
+The two homepages are written for different audiences, not translated 1:1. Japanese: show Japanese corporations that GenesisHub is a legitimate company established in Japan (company facts up front). English: attract overseas clients with market analysis, go-to-market strategy, marketing/advertising, localization and business matching. Keep that split when editing copy. Colors, fonts and spacing live in the `:root` block at the top of `style.css`.
 
 ---
 
@@ -84,12 +88,12 @@ Setup (one-time, ~5 minutes):
 4. In the Formspree form settings, add `https://www.genesishub.online` under **Restrict to Domain** (blocks other sites from posting to your endpoint).
 5. Commit and push, then send yourself a test message from the live site.
 
-Fields sent: first-name, last-name, email, subject, message. The visitor's `email` becomes the reply-to address automatically. `_gotcha` is a hidden honeypot for spam bots; `_language=ja` sets the Japanese UI for any Formspree-side prompts.
+Fields sent: first-name, last-name, company, email, subject, message. The status messages shown to visitors are set per page via `data-msg-*` attributes on the `<form>`, so the Japanese and English pages each show their own wording. The visitor's `email` becomes the reply-to address automatically. `_gotcha` is a hidden honeypot for spam bots; `_language=ja` sets the Japanese UI for any Formspree-side prompts.
 
 Free plan: 50 submissions/month, one form. Paid plans raise the limit and add file uploads, custom redirects, etc.
 
-## 4. Known content notes (carried over from Wix as-is)
+## 4. Content notes
 
-- Under **GenesisHubの強み**, the descriptions for 伴走型支援 and 柔軟性 are duplicates of the Translation and Business Matching service texts (this was already the case on Wix). Worth rewriting.
-- "Our strenghts" is spelled that way on the original site.
-- The **Services offered** section on Wix was a 2-slide slideshow (Spekter Agency / Animix Snap); here both are shown side by side.
+- The office is a virtual office, so the address is deliberately not shown on the homepages or footers. It appears only in the 会社概要 table on `info.html`. Company facts (representative, founding date) live there too; the company name also appears in each page's footer.
+- The English company name is rendered as "GenesisHub K.K." Change it in `en/index.html` and `info.html` if a different official English name is registered.
+- The privacy policy exists in Japanese only; the English site links to it and says so.

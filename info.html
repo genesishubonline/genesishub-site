@@ -3,21 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>会社情報 | GenesisHub</title>
-  <meta name="description" content="GenesisHub株式会社の会社概要。日本と海外の壁をなくす「ハブ」となり、新たなイノベーションを創出する。">
+  <title>会社情報 | GenesisHub株式会社</title>
+  <meta name="description" content="GenesisHub株式会社の会社情報。ミッション、会社概要、事業内容をご紹介します。">
   <link rel="canonical" href="https://www.genesishub.online/info">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-size='18' font-family='Helvetica,Arial' font-weight='700' fill='%23fff' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+  <meta property="og:title" content="会社情報 | GenesisHub株式会社">
+  <meta property="og:description" content="日本と海外の壁をなくす「ハブ」となり、新たなイノベーションを創出する。">
+  <meta property="og:url" content="https://www.genesishub.online/info">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2340'/%3E%3Ctext x='16' y='22' font-size='18' font-family='Helvetica,Arial' font-weight='700' fill='%23fff' text-anchor='middle'%3EG%3C/text%3E%3Ccircle cx='25' cy='8' r='3' fill='%23d9432f'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="./">GenesisHub株式会社</a>
-    <nav class="nav" aria-label="メインメニュー">
-      <a href="./">ホーム</a>
+    <a class="brand" href="./"><span class="dot"></span>GenesisHub <small>株式会社</small></a>
+    <button class="menu-btn" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="メインメニュー">
+      <a href="./#services">事業内容</a>
+      <a href="./#process">支援の流れ</a>
+      <a href="./#strengths">強み</a>
+      <a href="./#products">提供サービス</a>
       <a href="info.html" aria-current="page">会社情報</a>
-      <a href="./#contact">お問い合わせ</a>
+      <a class="btn btn-primary" href="./#contact">お問い合わせ</a>
+      <a class="lang" href="en/" hreflang="en" lang="en" title="English">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        EN
+      </a>
     </nav>
   </div>
 </header>
@@ -25,53 +39,85 @@
 <main>
   <section class="page-hero">
     <div class="wrap">
-      <div class="box">
-        <h1>GenesisHubのミッション</h1>
-        <p>日本と海外の壁をなくす「ハブ」となり、新たなイノベーションを創出する</p>
+      <p class="eyebrow">Company</p>
+      <h1>会社情報</h1>
+      <p>GenesisHub株式会社は、2024年に東京で設立された日本法人です。海外企業の日本進出と日本企業の海外展開を、バイリンガルのチームが一貫して支援します。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="mission">
+        <div>
+          <p class="eyebrow">Mission</p>
+          <blockquote>日本と海外の壁をなくす「ハブ」となり、<br>新たなイノベーションを創出する</blockquote>
+        </div>
+        <div>
+          <p>言語、文化、商習慣の違いは、優れたサービスが国境を越える際の大きな障壁になります。GenesisHubは、その障壁を取り除く「ハブ」として、海外企業が日本市場で、日本企業が海外市場で、本来の価値を発揮できるよう支援します。</p>
+          <p style="margin-top:14px">市場調査と戦略立案、マーケティングと広告運用、翻訳・ローカライズ、ビジネスマッチング。そして自社での国内向けサービス運営。これらを通じて、日本と世界の間に新しいビジネスの流れを生み出すことを目指しています。</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section company">
+  <section class="section alt">
     <div class="wrap">
-      <h2>会社概要</h2>
-      <dl>
-        <dt>会社名</dt><dd>GenesisHub株式会社</dd>
-        <dt>代表取締役</dt><dd>佃 龍暁</dd>
-        <dt>設立日</dt><dd>2024年1月5日</dd>
-        <dt>メールアドレス</dt><dd><a href="mailto:info@genesishub.online">info@genesishub.online</a></dd>
-        <dt>事業内容</dt>
-        <dd>
-          <ul>
-            <li>日本企業の海外進出支援</li>
-            <li>海外企業の国内進出支援</li>
-            <li>マーケティング支援</li>
-            <li>日本ユーザーに向けたサービス・アプリ提供</li>
-          </ul>
-        </dd>
-      </dl>
+      <div class="company-card">
+        <div class="intro">
+          <p class="eyebrow">Corporate Profile</p>
+          <h2>会社概要</h2>
+          <p>法人としての基本情報です。詳細はお問い合わせフォームよりお気軽にご連絡ください。</p>
+          <a class="btn btn-navy" href="./#contact">お問い合わせ</a>
+        </div>
+        <dl>
+          <div class="row"><dt>会社名</dt><dd>GenesisHub株式会社（英文表記：GenesisHub K.K.）</dd></div>
+          <div class="row"><dt>代表取締役</dt><dd>佃 龍暁</dd></div>
+          <div class="row"><dt>設立日</dt><dd>2024年1月5日</dd></div>
+          <div class="row"><dt>所在地</dt><dd>〒150-0043<br>東京都渋谷区道玄坂1丁目10番8号 渋谷道玄坂東急ビル2F-C</dd></div>
+          <div class="row"><dt>事業内容</dt><dd><ul><li>海外企業の国内進出支援（市場調査、参入戦略、マーケティング、広告運用、ローカライズ）</li><li>日本企業の海外進出支援</li><li>ビジネスマッチング</li><li>日本ユーザーに向けたサービス・アプリ提供</li></ul></dd></div>
+          <div class="row"><dt>メールアドレス</dt><dd><a href="mailto:info@genesishub.online">info@genesishub.online</a></dd></div>
+          <div class="row"><dt>Webサイト</dt><dd><a href="https://www.genesishub.online/">https://www.genesishub.online/</a></dd></div>
+        </dl>
+      </div>
     </div>
+  </section>
+
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="box">
+    <div class="cols">
       <div>
-        <h2>Address</h2>
-        <p>〒150-0043<br>東京都渋谷区道玄坂1丁目10番8号<br>渋谷道玄坂東急ビル2F-C</p>
+        <a class="brand" href="./"><span class="dot"></span>GenesisHub <small>株式会社</small></a>
+        <p class="tagline">日本と世界をつなぐ、ビジネスのハブに。海外企業の日本進出と日本企業の海外展開を支援します。</p>
       </div>
       <div>
-        <h2>Email</h2>
-        <p><a href="mailto:info@genesishub.online">info@genesishub.online</a></p>
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="./#services">事業内容</a></li>
+          <li><a href="./#strengths">強み</a></li>
+          <li><a href="./#products">提供サービス</a></li>
+          <li><a href="info.html">会社情報</a></li>
+          <li><a href="./#contact">お問い合わせ</a></li>
+        </ul>
       </div>
       <div>
-        <h2>Privacy Policy</h2>
-        <a href="privacypolicy.html" aria-label="プライバシーポリシー"><img class="rss" src="images/rss.png" alt="" width="24" height="24"></a>
-        <p class="copy">© 2025 GenesisHub株式会社</p>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:info@genesishub.online">info@genesishub.online</a></li>
+          <li><a href="privacypolicy.html">プライバシーポリシー</a></li>
+          <li><a href="en/" hreflang="en" lang="en">English</a></li>
+        </ul>
       </div>
+    </div>
+    <div class="bottom">
+      <p>© 2026 GenesisHub株式会社</p>
+      <p>Becoming the Business Hub between Japan and the world</p>
     </div>
   </div>
 </footer>
+
+<script src="site.js" defer></script>
 </body>
 </html>
