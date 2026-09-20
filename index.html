@@ -148,7 +148,7 @@
     <div class="wrap">
       <h2 class="section-title">Contact / <span class="ja">お問い合わせ</span></h2>
       <p class="section-sub">弊社提供サービスなどについて、お気軽にお問い合わせください</p>
-      <form id="contact-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+      <form id="contact-form" action="https://formspree.io/f/xjykywbr" method="POST">
         <div class="left">
           <div><label for="first-name">First Name</label><input id="first-name" name="first-name" type="text" autocomplete="given-name"></div>
           <div><label for="last-name">Last Name</label><input id="last-name" name="last-name" type="text" autocomplete="family-name"></div>
@@ -158,8 +158,11 @@
         <div class="right">
           <div><label for="message">Leave us a message...</label><textarea id="message" name="message"></textarea></div>
         </div>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <input type="hidden" name="_language" value="ja">
         <button type="submit">Submit</button>
-        <p class="note">送信ボタンでメールソフトが開きます（info@genesishub.online 宛）。</p>
+        <p class="form-status" role="status" aria-live="polite" hidden></p>
+        <p class="note">* は必須項目です。送信内容は info@genesishub.online に届きます。</p>
       </form>
     </div>
   </section>
@@ -187,18 +190,56 @@
 </footer>
 
 <script>
-  // Contact form: until a form backend (e.g. Formspree) is configured, open the
-  // visitor's mail client with the message pre-filled. See README.md to switch.
+  // Contact form: submits to Formspree in the background (no page reload) and
+  // shows the result inline. The Formspree endpoint is the form's action URL;
+  // see README.md §3 for setup. Until the endpoint is configured (REPLACE_ME),
+  // the form falls back to opening the visitor's mail client so nothing breaks.
   (function () {
     var f = document.getElementById('contact-form');
-    if (!f || f.action.indexOf('REPLACE_ME') === -1) return;
+    if (!f) return;
+    var status = f.querySelector('.form-status');
+    var button = f.querySelector('button[type="submit"]');
+    var v = function (id) { return (document.getElementById(id).value || '').trim(); };
+    var show = function (msg, ok) {
+      status.textContent = msg;
+      status.className = 'form-status ' + (ok ? 'ok' : 'error');
+      status.hidden = false;
+    };
+
+    if (f.action.indexOf('REPLACE_ME') !== -1) {
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var subject = encodeURIComponent('[Web] ' + v('subject'));
+        var body = encodeURIComponent(
+          'Name: ' + v('first-name') + ' ' + v('last-name') + '\nEmail: ' + v('email') + '\n\n' + v('message'));
+        window.location.href = 'mailto:info@genesishub.online?subject=' + subject + '&body=' + body;
+      });
+      return;
+    }
+
     f.addEventListener('submit', function (e) {
       e.preventDefault();
-      var v = function (id) { return (document.getElementById(id).value || '').trim(); };
-      var subject = encodeURIComponent('[Web] ' + v('subject'));
-      var body = encodeURIComponent(
-        'Name: ' + v('first-name') + ' ' + v('last-name') + '\nEmail: ' + v('email') + '\n\n' + v('message'));
-      window.location.href = 'mailto:info@genesishub.online?subject=' + subject + '&body=' + body;
+      var data = new FormData(f);
+      data.append('_subject', '[Web] お問い合わせ: ' + v('subject'));
+      button.disabled = true;
+      var label = button.textContent;
+      button.textContent = '送信中…';
+      status.hidden = true;
+      fetch(f.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, json: j }; }); })
+        .then(function (res) {
+          if (res.ok) {
+            f.reset();
+            show('送信しました。お問い合わせありがとうございます。担当者よりご連絡いたします。', true);
+          } else {
+            var err = res.json && res.json.errors ? res.json.errors.map(function (x) { return x.message; }).join(' / ') : '';
+            show('送信に失敗しました。' + (err ? '（' + err + '）' : '') + ' お手数ですが info@genesishub.online まで直接ご連絡ください。', false);
+          }
+        })
+        .catch(function () {
+          show('送信に失敗しました。ネットワーク状況をご確認のうえ再度お試しいただくか、info@genesishub.online まで直接ご連絡ください。', false);
+        })
+        .then(function () { button.disabled = false; button.textContent = label; });
     });
   })();
 </script>

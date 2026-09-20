@@ -72,15 +72,21 @@ If the GitHub Pages settings page shows "Domain's DNS record could not be retrie
 
 Only after `https://www.genesishub.online` shows the new site should you cancel the Wix site plan. Keep the domain registration itself.
 
-## 3. Contact form
+## 3. Contact form (Formspree)
 
-Wix hosted the old form. On a static site there is no server, so right now the Submit button opens the visitor's mail app addressed to info@genesishub.online with the fields pre-filled.
+The form posts to Formspree in the background and shows a success / error message inline. Submissions arrive by email and are also kept in the Formspree dashboard.
 
-To get a real form that emails you instead:
+Setup (one-time, ~5 minutes):
 
-1. Create a free form at https://formspree.io (sign up with info@genesishub.online), copy the form endpoint (looks like `https://formspree.io/f/abcdwxyz`).
-2. In `index.html`, replace `https://formspree.io/f/REPLACE_ME` with that URL. The mailto fallback switches itself off automatically.
-3. Commit and push.
+1. Sign up at https://formspree.io (use info@genesishub.online so notifications land in the shared inbox) and confirm the email.
+2. **+ New form** → name it e.g. "GenesisHub Contact" → copy the endpoint, which looks like `https://formspree.io/f/abcdwxyz`.
+3. In `index.html`, the endpoint is the `action` URL on the `<form>` tag (currently `https://formspree.io/f/xjykywbr`). To switch forms, replace it there. If it is ever set back to `REPLACE_ME`, the button falls back to opening the visitor's mail app.
+4. In the Formspree form settings, add `https://www.genesishub.online` under **Restrict to Domain** (blocks other sites from posting to your endpoint).
+5. Commit and push, then send yourself a test message from the live site.
+
+Fields sent: first-name, last-name, email, subject, message. The visitor's `email` becomes the reply-to address automatically. `_gotcha` is a hidden honeypot for spam bots; `_language=ja` sets the Japanese UI for any Formspree-side prompts.
+
+Free plan: 50 submissions/month, one form. Paid plans raise the limit and add file uploads, custom redirects, etc.
 
 ## 4. Known content notes (carried over from Wix as-is)
 
